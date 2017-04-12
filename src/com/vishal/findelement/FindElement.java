@@ -7,7 +7,12 @@ public class FindElement {
 	private static String s;
 	private static LinkedHashSet<Character> ts;	
 
-	public static Character nonRepeatingCharAt(String str, int index){
+	public static Character nonRepeatingCharAt(String str, int index) throws InvalidArgumentException{
+		
+		if(index<0){
+			throw new InvalidArgumentException();
+		}
+		
 		s = str;
 		ts = new LinkedHashSet<Character>();
 		for (int i = 0; i < str.length(); i++) {
@@ -23,7 +28,7 @@ public class FindElement {
 			itr.next();
 			i++;
 		}		
-		return itr.next();
+		return (itr.hasNext())?itr.next():null;
 		
 	}
 }
