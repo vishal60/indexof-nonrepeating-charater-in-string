@@ -9,9 +9,8 @@ public class FindElement {
 
 	public static Character nonRepeatingCharAt(String str, int index) throws InvalidArgumentException{
 		
-		if(index<0){
+		if(index<0)
 			throw new InvalidArgumentException();
-		}
 		
 		s = str;
 		ts = new LinkedHashSet<Character>();
@@ -21,14 +20,15 @@ public class FindElement {
 			else
 				ts.add(s.charAt(i));
 		}
-		Iterator<Character> itr = ts.iterator();
-				
-		int i = 1;
-		while(itr.hasNext() && i<index){
-			itr.next();
-			i++;
-		}		
-		return (itr.hasNext())?itr.next():null;
+		
+		Iterator<Character> itr = ts.iterator();						
+		for(int i=1; itr.hasNext()&&i<index; i++)
+			itr.next();		
+		
+		if(itr.hasNext())
+			return itr.next();
+		else
+			throw new InvalidArgumentException();
 		
 	}
 }
